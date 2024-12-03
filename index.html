@@ -40,14 +40,14 @@
 
         .pointer {
             position: absolute;
-            top: -10px;
+            top: 0px;
             left: 50%;
             transform: translateX(-50%);
             width: 0;
             height: 0;
             border-left: 20px solid transparent;
             border-right: 20px solid transparent;
-            border-bottom: 40px solid #ff0000;
+            border-top: 40px solid #ff0000;
         }
 
         button {
@@ -85,7 +85,7 @@
     <button id="spinButton">Spin the Wheel!</button>
 
     <script>
-        // Création de la roue avec des couleurs pour chaque segment
+        // Création de la roue avec des couleurs par montant
         const roue = new Winwheel({
             'numSegments': 16,
             'segments': [
@@ -94,13 +94,13 @@
                 { 'fillStyle': '#8A2BE2', 'text': 'Move', 'data': 'You host a live FAQ session: Move to the next "Question" space.' },
                 { 'fillStyle': '#00FF00', 'text': '+100k', 'data': 'Your latest post went viral thanks to a trending topic: You gain +100k followers!' },
                 { 'fillStyle': '#FF6347', 'text': '-100k', 'data': 'An old post resurfaces and sparks controversy: You lose -100k followers.' },
-                { 'fillStyle': '#1E90FF', 'text': '+50k', 'data': 'You sign a partnership with a popular brand: You gain +50k followers.' },
+                { 'fillStyle': '#FFD700', 'text': '+50k', 'data': 'You sign a partnership with a popular brand: You gain +50k followers.' },
                 { 'fillStyle': '#D3D3D3', 'text': 'Neutral', 'data': 'You post a behind-the-scenes video: No followers gained or lost.' },
                 { 'fillStyle': '#FF4500', 'text': '-50k', 'data': 'You forget to post for an entire week: You lose -50k followers.' },
-                { 'fillStyle': '#FFD700', 'text': '+100k', 'data': 'A clip of you becomes a viral meme: You gain +100k followers!' },
+                { 'fillStyle': '#00FF00', 'text': '+100k', 'data': 'A clip of you becomes a viral meme: You gain +100k followers!' },
                 { 'fillStyle': '#8A2BE2', 'text': 'Move', 'data': 'You answer followers’ questions in a Q&A: Move to the next "Question" space.' },
-                { 'fillStyle': '#FF6347', 'text': '-50k', 'data': 'It’s revealed you’ve bought followers: You lose -50k followers.' },
-                { 'fillStyle': '#1E90FF', 'text': '+50k', 'data': 'You post a vlog from an exotic destination: You gain +50k followers.' },
+                { 'fillStyle': '#FF4500', 'text': '-50k', 'data': 'It’s revealed you’ve bought followers: You lose -50k followers.' },
+                { 'fillStyle': '#FFD700', 'text': '+50k', 'data': 'You post a vlog from an exotic destination: You gain +50k followers.' },
                 { 'fillStyle': '#D3D3D3', 'text': 'Neutral', 'data': 'You share your favorite playlist: Your audience enjoys it, but no followers gained or lost.' },
                 { 'fillStyle': '#FF6347', 'text': '-100k', 'data': 'You share a controversial opinion that divides your audience: You lose -100k followers.' },
                 { 'fillStyle': '#00FF00', 'text': '+100k', 'data': 'Your YouTube channel hits 1M views: You gain +100k followers!' },
