@@ -115,7 +115,8 @@
                 'duration': 5,
                 'spins': 8,
                 'callbackFinished': (segment) => {
-                    alert(`${segment.data}`);
+                    alert(`Result: ${segment.data}`);
+                    location.reload(); // Recharge la page
                 },
             },
             'pointerAngle': 0 // Aligned with the top marker
