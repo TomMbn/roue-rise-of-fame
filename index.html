@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roue Bonus/Malus</title>
+    <title>Rise of Fame : Wheel of Destiny</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/zarocknz/javascript-winwheel/Winwheel.js"></script>
     <style>
@@ -56,28 +56,29 @@
             padding: 15px 30px;
             font-size: 18px;
             color: #fff;
-            background: linear-gradient(135deg, #ff7e5f, #feb47b);
+            background: linear-gradient(135deg, #1e90ff, #00bfff); /* Dégradé bleu */
             border: none;
             border-radius: 5px;
             cursor: pointer;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
             transition: all 0.3s ease;
         }
-
+        
         button:hover {
             transform: scale(1.1);
-            background: linear-gradient(135deg, #feb47b, #ff7e5f);
+            background: linear-gradient(135deg, #00bfff, #1e90ff); /* Inverser le dégradé au survol */
             box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
         }
-
+        
         button:active {
             transform: scale(0.95);
             box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.4);
         }
+
     </style>
 </head>
 <body>
-    <h1>Spin the Wheel: Bonus/Malus</h1>
+    <h1>Rise of Fame : Wheel of Destiny</h1>
     <div class="wheel-container">
         <canvas id="canvas" width="500" height="500"></canvas>
         <div class="pointer"></div>
@@ -92,7 +93,7 @@
                 { 'fillStyle': '#FFD700', 'text': '+50k', 'data': 'A celebrity shares your story: You gain +50k followers.' },
                 { 'fillStyle': '#FF4500', 'text': '-50k', 'data': 'Your latest sponsored post is poorly received: You lose -50k followers.' },
                 { 'fillStyle': '#8A2BE2', 'text': 'Move', 'data': 'You host a live FAQ session: Move to the next "Question" space.' },
-                { 'fillStyle': '#00FF00', 'text': '+100k', 'data': 'Your latest post went viral thanks to a trending topic: You gain +100k followers!' },
+                { 'fillStyle': '#00FF00', 'text': '+50k', 'data': 'Your latest post went viral thanks to a trending topic: You gain +100k followers!' },
                 { 'fillStyle': '#FF6347', 'text': '-100k', 'data': 'An old post resurfaces and sparks controversy: You lose -100k followers.' },
                 { 'fillStyle': '#FFD700', 'text': '+50k', 'data': 'You sign a partnership with a popular brand: You gain +50k followers.' },
                 { 'fillStyle': '#D3D3D3', 'text': 'Neutral', 'data': 'You post a behind-the-scenes video: No followers gained or lost.' },
@@ -103,7 +104,7 @@
                 { 'fillStyle': '#FFD700', 'text': '+50k', 'data': 'You post a vlog from an exotic destination: You gain +50k followers.' },
                 { 'fillStyle': '#D3D3D3', 'text': 'Neutral', 'data': 'You share your favorite playlist: Your audience enjoys it, but no followers gained or lost.' },
                 { 'fillStyle': '#FF6347', 'text': '-100k', 'data': 'You share a controversial opinion that divides your audience: You lose -100k followers.' },
-                { 'fillStyle': '#00FF00', 'text': '+100k', 'data': 'Your YouTube channel hits 1M views: You gain +100k followers!' },
+                { 'fillStyle': '#00FF00', 'text': '+100k', 'data': 'Your post hits 1M views: You gain +100k followers!' },
                 { 'fillStyle': '#FF4500', 'text': '-50k', 'data': 'Your content is no longer aligned with trends: You lose -50k followers.' },
             ],
             'animation': {
@@ -111,7 +112,7 @@
                 'duration': 5,
                 'spins': 8,
                 'callbackFinished': (segment) => {
-                    alert(`Result: ${segment.data}`);
+                    alert(`${segment.data}`);
                 },
             },
             'pointerAngle': 0 // Aligned with the top marker
