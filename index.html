@@ -26,12 +26,28 @@
             margin-bottom: 20px;
         }
 
+        .wheel-container {
+            position: relative;
+        }
+
         canvas {
             display: block;
             margin: 20px auto;
             border: 8px solid #fff;
             border-radius: 50%;
             box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .pointer {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-bottom: 40px solid #ff0000;
         }
 
         button {
@@ -62,30 +78,33 @@
 </head>
 <body>
     <h1>Spin the Wheel: Bonus/Malus</h1>
-    <canvas id="canvas" width="500" height="500"></canvas>
+    <div class="wheel-container">
+        <canvas id="canvas" width="500" height="500"></canvas>
+        <div class="pointer"></div>
+    </div>
     <button id="spinButton">Spin the Wheel!</button>
 
     <script>
-        // Création de la roue avec montants uniquement sur la roue
+        // Création de la roue avec des couleurs pour chaque segment
         const roue = new Winwheel({
             'numSegments': 16,
             'segments': [
-                { 'text': '+50k', 'data': 'A celebrity shares your story : You gain +50k followers.' },
-                { 'text': '+100k', 'data': 'Your latest post went viral thanks to a trending topic : You gain +100k followers!' },
-                { 'text': '+50k', 'data': 'You sign a partnership with a popular brand: You gain +50k followers.' },
-                { 'text': '+50k', 'data': 'You launch a massive giveaway : You gain +50k followers.' },
-                { 'text': '+100k', 'data': 'Your YouTube channel hits 1M views on a video : You gain +100k followers!' },
-                { 'text': '+100k', 'data': 'A clip of you becomes a viral meme : You gain +100k followers!' },
-                { 'text': '+50k', 'data': 'You post a vlog from an exotic destination : You gain +50k followers' },
-                { 'text': '-50k', 'data': 'Your latest sponsored post is poorly received by your audience : You lose -50k followers.' },
-                { 'text': '-50k', 'data': 'You forget to post for an entire week : You lose -50k followers.' },
-                { 'text': '-100k', 'data': 'You share a controversial opinion that divides your audience : You lose -100k followers!' },
-                { 'text': '-100k', 'data': 'An old post resurfaces and sparks controversy : You lose -100k followers!' },
-                { 'text': '-50k', 'data': 'Your content is no longer aligned with current trends : You lose -50k followers.' },
-                { 'text': '-100k', 'data': 'A brand you support is involved in a scandal : You lose -100k followers!' },
-                { 'text': '-50k', 'data': 'It’s revealed that you’ve bought followers : You lose -50k followers.' },
-                { 'text': 'Move', 'data': 'You host a live FAQ session, answering your followers burning questions: Move to the next "Question" space.' },
-                { 'text': 'Neutral', 'data': 'You post a behind-the-scenes video of your daily routine : Your audience appreciates the transparency, but no followers gained or lost.' },
+                { 'fillStyle': '#FFD700', 'text': '+50k', 'data': 'A celebrity shares your story: You gain +50k followers.' },
+                { 'fillStyle': '#FF4500', 'text': '-50k', 'data': 'Your latest sponsored post is poorly received: You lose -50k followers.' },
+                { 'fillStyle': '#8A2BE2', 'text': 'Move', 'data': 'You host a live FAQ session: Move to the next "Question" space.' },
+                { 'fillStyle': '#00FF00', 'text': '+100k', 'data': 'Your latest post went viral thanks to a trending topic: You gain +100k followers!' },
+                { 'fillStyle': '#FF6347', 'text': '-100k', 'data': 'An old post resurfaces and sparks controversy: You lose -100k followers.' },
+                { 'fillStyle': '#1E90FF', 'text': '+50k', 'data': 'You sign a partnership with a popular brand: You gain +50k followers.' },
+                { 'fillStyle': '#D3D3D3', 'text': 'Neutral', 'data': 'You post a behind-the-scenes video: No followers gained or lost.' },
+                { 'fillStyle': '#FF4500', 'text': '-50k', 'data': 'You forget to post for an entire week: You lose -50k followers.' },
+                { 'fillStyle': '#FFD700', 'text': '+100k', 'data': 'A clip of you becomes a viral meme: You gain +100k followers!' },
+                { 'fillStyle': '#8A2BE2', 'text': 'Move', 'data': 'You answer followers’ questions in a Q&A: Move to the next "Question" space.' },
+                { 'fillStyle': '#FF6347', 'text': '-50k', 'data': 'It’s revealed you’ve bought followers: You lose -50k followers.' },
+                { 'fillStyle': '#1E90FF', 'text': '+50k', 'data': 'You post a vlog from an exotic destination: You gain +50k followers.' },
+                { 'fillStyle': '#D3D3D3', 'text': 'Neutral', 'data': 'You share your favorite playlist: Your audience enjoys it, but no followers gained or lost.' },
+                { 'fillStyle': '#FF6347', 'text': '-100k', 'data': 'You share a controversial opinion that divides your audience: You lose -100k followers.' },
+                { 'fillStyle': '#00FF00', 'text': '+100k', 'data': 'Your YouTube channel hits 1M views: You gain +100k followers!' },
+                { 'fillStyle': '#FF4500', 'text': '-50k', 'data': 'Your content is no longer aligned with trends: You lose -50k followers.' },
             ],
             'animation': {
                 'type': 'spinToStop',
@@ -94,7 +113,8 @@
                 'callbackFinished': (segment) => {
                     alert(`Result: ${segment.data}`);
                 },
-            }
+            },
+            'pointerAngle': 0 // Aligned with the top marker
         });
 
         // Actionner le bouton
