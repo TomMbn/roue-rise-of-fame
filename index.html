@@ -7,42 +7,92 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/zarocknz/javascript-winwheel/Winwheel.js"></script>
     <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: #fff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
         canvas {
             display: block;
-            margin: 0 auto;
+            margin: 20px auto;
+            border: 8px solid #fff;
+            border-radius: 50%;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
         }
+
         button {
             display: block;
-            margin: 20px auto;
-            padding: 10px 20px;
-            font-size: 16px;
+            margin-top: 20px;
+            padding: 15px 30px;
+            font-size: 18px;
+            color: #fff;
+            background: linear-gradient(135deg, #ff7e5f, #feb47b);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+            background: linear-gradient(135deg, #feb47b, #ff7e5f);
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        button:active {
+            transform: scale(0.95);
+            box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.4);
         }
     </style>
 </head>
 <body>
+    <h1>Spin the Wheel: Bonus/Malus</h1>
     <canvas id="canvas" width="500" height="500"></canvas>
-    <button id="spinButton">Lancer la roue</button>
+    <button id="spinButton">Spin the Wheel!</button>
 
     <script>
         // Création de la roue
         const roue = new Winwheel({
-            'numSegments': 8,
+            'numSegments': 16,
             'segments': [
-                { 'text': 'Avance 3 cases' },
-                { 'text': 'Recule 2 cases' },
-                { 'text': 'Gagne une carte' },
-                { 'text': 'Perd 1 tour' },
-                { 'text': 'Double tes points' },
-                { 'text': 'Perd 5 points' },
-                { 'text': 'Avance 1 case' },
-                { 'text': 'Rejoue' },
+                { 'text': 'A celebrity shares your story : You gain +50k followers.' },
+                { 'text': 'Your latest post went viral thanks to a trending topic : You gain +100k followers!' },
+                { 'text': 'You sign a partnership with a popular brand: You gain +50k followers.' },
+                { 'text': 'You launch a massive giveaway : You gain +50k followers.' },
+                { 'text': 'Your YouTube channel hits 1M views on a video : You gain +100k followers!' },
+                { 'text': 'A clip of you becomes a viral meme : You gain +100k followers!' },
+                { 'text': 'You post a vlog from an exotic destination : You gain +50k followers' },
+                { 'text': 'Your latest sponsored post is poorly received by your audience : You lose -50k followers.' },
+                { 'text': 'You forget to post for an entire week : You lose -50k followers.' },
+                { 'text': 'You share a controversial opinion that divides your audience : You lose -100k followers!' },
+                { 'text': 'An old post resurfaces and sparks controversy : You lose -100k followers!' },
+                { 'text': 'Your content is no longer aligned with current trends : You lose -50k followers.' },
+                { 'text': 'A brand you support is involved in a scandal : You lose -100k followers!' },
+                { 'text': 'It’s revealed that you’ve bought followers : You lose -50k followers.' },
+                { 'text': 'You host a live FAQ session, answering your followers burning questions: Move to the next "Question" space.' },
+                { 'text': 'You post a behind-the-scenes video of your daily routine : Your audience appreciates the transparency, but no followers gained or lost.' },
             ],
             'animation': {
                 'type': 'spinToStop',
                 'duration': 5,
                 'spins': 8,
                 'callbackFinished': (segment) => {
-                    alert(`Résultat : ${segment.text}`);
+                    alert(`Result: ${segment.text}`);
                 },
             }
         });
